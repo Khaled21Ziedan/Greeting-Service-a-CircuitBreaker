@@ -1,5 +1,24 @@
 server :
-  port : 9999
+   port : 9999
 spring :
-  application :
-    name : greeting service
+   application :
+    name : greetingservice
+resilience4j :
+   circuitbreaker :
+    instances :
+      hello-internal :
+        waitDurationInOpenState: 10s
+        minimumNumberOfCalls: 5
+      hello-service :
+        waitDurationInOpenState: 10s
+        minimumNumberOfCalls: 5
+   timelimiter :
+    instances :
+      hello-internal :
+        timeoutDuration: 5s
+      hello-service :
+        timeoutDuration: 5s
+
+
+
+
